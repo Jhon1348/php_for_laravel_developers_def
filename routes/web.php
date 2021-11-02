@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Task;
+
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('tasks',[
-        'tasks' => Task::all()
-    ]);
-});
+
+Route::get('/', [TaskController::class,'index']);
 
 Route::get('/contact', function () {
     return view('contact');
@@ -21,8 +19,4 @@ Route::get('/users', function () {
     return view('users');
 });
 
-Route::get('/tasks', function () {
-    return view('tasks',[
-        'tasks' =>[]
-    ]);
-});
+Route::get('/tasks',[TaskController::class,'index']);
